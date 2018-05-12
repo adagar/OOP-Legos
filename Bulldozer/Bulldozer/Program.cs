@@ -6,58 +6,34 @@ namespace Bulldozer
     {
         static void Main(string[] args)
         {
-            var man = new Man();
-            var kart = new Kart();
-            var alien = new Alien();
+            var worker = new FactoryWorker();
+            worker.Count(4);
+            worker.Count(5);
+            worker.Count(3.5f);
         }
     }
-    public class GeneralObject
+    public class FactoryWorker
     {
-        public GeneralObject()
+        public FactoryWorker()
         {
 
         }
-        public bool moves { get; set; }
-        public string color { get; set; }
-    }
-    public class Human : GeneralObject
-    {
-        public Human()
+        public void Count (int number)
         {
-
+            if (total == null)
+            {
+                total = 0;
+            }
+            total = total + Convert.ToSingle(number);
+            Console.WriteLine(total.ToString());
         }
-        public string name { get; set; }
-    }
 
-    public class Man : Human
-    {
-        //create a constructor 
-        public Man()
+        public void Count (float number) //normally you wouldn't want to use same name, but since this is helping us handle a second TYPE its OK
         {
-
+            total += number;
+            Console.WriteLine(total.ToString());
         }
-    }
-    public class Woman : Human
-    {
-        public Woman()
-        {
 
-        }
-    }
-    public class Kart : GeneralObject
-    {
-        public Kart()
-        {
-
-        }
-        public string manufacturer { get; set; }
-    }
-    public class Alien : GeneralObject
-    {
-        public Alien()
-        {
-
-        }
-        public string planet { get; set; }
+        public float total { get; set; }
     }
 }
