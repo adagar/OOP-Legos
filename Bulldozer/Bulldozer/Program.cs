@@ -7,9 +7,8 @@ namespace Bulldozer
         static void Main(string[] args)
         {
             var worker = new FactoryWorker();
-            worker.Count(4);
-            worker.Count(5);
-            worker.Count(3.5f);
+            var result = worker.AddNumbers(2, 3);
+            Console.WriteLine(result.ToString());
         }
     }
     public class FactoryWorker
@@ -18,22 +17,11 @@ namespace Bulldozer
         {
 
         }
-        public void Count (int number)
-        {
-            if (total == null)
-            {
-                total = 0;
-            }
-            total = total + Convert.ToSingle(number);
-            Console.WriteLine(total.ToString());
-        }
 
-        public void Count (float number) //normally you wouldn't want to use same name, but since this is helping us handle a second TYPE its OK
+        public int AddNumbers(int num1, int num2)
         {
-            total += number;
-            Console.WriteLine(total.ToString());
+            var result = num1 + num2;
+            return result;
         }
-
-        public float total { get; set; }
     }
 }
